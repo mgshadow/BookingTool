@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/Projektmappenelemente/">
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="BookingToolCLI\BookingToolCLI.csproj" Id="c57932ca-a663-49bd-91b7-55f077278a58" />
+  <Project Path="UnitTests/UnitTests.csproj" Id="b996b38f-df03-496c-835d-e21e0bfb9c02" />
+</Solution>
