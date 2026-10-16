@@ -13,4 +13,5 @@
 ## Improvements for the next week:
 - function to remove booking
   - add tests to verify removal of bookings
+- create a general Equatable class instead of making each data model class itself equatable
     
