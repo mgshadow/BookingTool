@@ -4,21 +4,25 @@ using BookingToolCLI;
 
 namespace UnitTests
 {
-
-  private string[] c9 = new[] { "u01", "u02", "u03", "u04", "u05", "u06", "u07", "u08", "u09" };
-  private string[] w2 = new[] { "w01", "w02" };
-  private string[] c10 = new[] { "u01", "u02", "u03", "u04", "u05", "u06", "u07", "u08", "u09", "u10" };
-
   [TestClass]
   public class UiTests
   {
+    private string[] c9 = new[] { "u01", "u02", "u03", "u04", "u05", "u06", "u07", "u08", "u09" };
+
     [TestMethod]
-    public void ShowCorrectMenuTest()
+    public void ShowMenuTest()
     {
       var ui = new FakeConsoleInterface();
-      ui.WriteLine("Das ist mein Menu");
+      Assert.AreEqual(ui.ShowMenu(), "1 = Book | 2 = Remove | 3 = List | 0 = Exit\n-------------------------------------------");
+    }
 
-      Assert.AreEqual(ui.Outputs[0], "Das ist mein Menu");
+    [TestMethod]
+    public void OutputTest()
+    {
+      var ui = new FakeConsoleInterface();
+      ui.WriteLine("This is some random output.");
+
+      Assert.AreEqual(ui.Outputs[0], "This is some random output.");
     }
 
     [TestMethod]
@@ -35,21 +39,23 @@ namespace UnitTests
       var api = new API();
 
       var booking1 = api.MakeBooking("alex");
-      Assert.AreEqual(ui.convertStatusToString(booking1.status), "Booking confirmed!");
+      Assert.AreEqual(ui.ConvertStatusToString(booking1.Status), "Booking confirmed!");
 
       CreateBookings(api, c9);
 
-      var booking2 = api.MakeBooking("erich"); 
-      Assert.AreEqual(ui.convertStatusToString(booking2.status), "You are on the waiting list!");
+      var booking2 = api.MakeBooking("erich");
+      Assert.AreEqual(ui.ConvertStatusToString(booking2.Status), "You are on the waiting list!");
 
       var booking3 = api.MakeBooking("alex");
-      Assert.AreEqual(ui.convertStatusToString(booking3.status), "User already exists!");
+      Assert.AreEqual(ui.ConvertStatusToString(booking3.Status), "User already exists!");
     }
 
-    [TestMethod]
-    public void AddBookingTest()
+    private void CreateBookings(API api, params string[] ids)
     {
-
+      foreach (var id in ids)
+      {
+        api.MakeBooking(id);
+      }
     }
   }
 }
