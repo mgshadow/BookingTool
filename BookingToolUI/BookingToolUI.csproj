@@ -54,9 +54,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BookingToolCLI\BookingToolCLI.csproj">
+    <ProjectReference Include="..\BookingToolApi\BookingToolApi.csproj">
       <Project>{C57932CA-A663-49BD-91B7-55F077278A58}</Project>
-      <Name>BookingToolCLI</Name>
+      <Name>BookingToolApi</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

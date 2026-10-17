@@ -57,9 +57,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BookingToolCLI\BookingToolCLI.csproj">
+    <ProjectReference Include="..\BookingToolApi\BookingToolApi.csproj">
       <Project>{c57932ca-a663-49bd-91b7-55f077278a58}</Project>
-      <Name>BookingToolCLI</Name>
+      <Name>BookingToolApi</Name>
     </ProjectReference>
     <ProjectReference Include="..\BookingToolUI\BookingToolUI.csproj">
       <Project>{406725AA-F45E-470F-BE2A-9D2E26CC419D}</Project>

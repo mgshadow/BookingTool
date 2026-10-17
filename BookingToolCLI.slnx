@@ -2,7 +2,7 @@
   <Folder Name="/Projektmappenelemente/">
     <File Path="README.md" />
   </Folder>
-  <Project Path="BookingToolCLI\BookingToolCLI.csproj" Id="c57932ca-a663-49bd-91b7-55f077278a58" />
+  <Project Path="BookingToolApi/BookingToolApi.csproj" Id="c57932ca-a663-49bd-91b7-55f077278a58" />
   <Project Path="BookingToolUI/BookingToolUI.csproj" Id="406725aa-f45e-470f-be2a-9d2e26cc419d" />
   <Project Path="UnitTests/UnitTests.csproj" Id="b996b38f-df03-496c-835d-e21e0bfb9c02" />
 </Solution>
