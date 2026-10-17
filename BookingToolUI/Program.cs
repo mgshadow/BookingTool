@@ -2,60 +2,53 @@
 
 namespace BookingToolUI
 {
-  internal class Program
-  {
-    static void Main(string[] args)
+    internal class Program
     {
-      var ui = new ConsoleInterface();
-      var api = new API();
-
-      while (true)
-      {
-        ui.WriteLine("\n");
-        ui.WriteLine(ui.ShowMenu());
-
-        var input = ui.ReadLine();
-
-        switch (input)
+        static void Main(string[] args)
         {
-          // Book
-          case "1":
-            ui.WriteLine("Please input ID to book: ");
-            var result = api.MakeBooking(ui.ReadLine());
-            ui.WriteLine(ui.ConvertStatusToString(result.Status));
-            break;
+            var ui = new ConsoleInterface();
+            var api = new API();
 
-          // Remove
-          case "2":
-            ui.WriteLine("Please input ID to remove: ");
-            var remove = api.RemoveBooking(ui.ReadLine());
-
-            if (remove)
+            while (true)
             {
-              ui.WriteLine("User has been removed.");
+                ui.WriteLine("\n");
+                ui.WriteLine(ui.ShowMenu());
+
+                var input = ui.ReadLine();
+                if (input == null || input == ui.ExitCommand)
+                {
+                    return;
+                }
+                else if (input == ui.BookCommand)
+                {
+                    ui.WriteLine("Please input ID to book: ");
+                    var result = api.MakeBooking(ui.ReadLine());
+                    ui.WriteLine(ui.ConvertStatusToString(result.Status));
+                }
+                else if (input == ui.RemoveCommand)
+                {
+                    ui.WriteLine("Please input ID to remove: ");
+                    var remove = api.RemoveBooking(ui.ReadLine());
+
+                    if (remove)
+                    {
+                        ui.WriteLine("User has been removed.");
+                    }
+                    else
+                    {
+                        ui.WriteLine("User does not exist.");
+                    }
+                }
+                else if (input == ui.ListCommand)
+                {
+                    var bookings = api.GetBookings();
+                    ui.PrintBookings(bookings);
+                }
+                else
+                {
+                    ui.WriteLine("Invalid input.");
+                }
             }
-            else
-            {
-              ui.WriteLine("User does not exist.");
-            }
-
-            break;
-
-          // List
-          case "3":
-            var bookings = api.GetBookings();
-            ui.PrintBookings(bookings);
-            break;
-
-          case null:
-          case "0":
-            return;
-
-          default:
-            ui.WriteLine("Invalid input.");
-            break;
         }
-      }
     }
-  }
 }

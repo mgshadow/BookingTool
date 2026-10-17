@@ -27,6 +27,11 @@
 - Implementation of `GetBookings()` is straightforward
 - Tests for the implementation are successful
 
+## Review Group 3 from Group 
+- In the `PrintBookings` function, removed the position counter and implemented the selection with a value/index tuple instead, since the `position` variable is not needed outside the loop.
+- Refactored the `ConvertStatusToString` function to use a `switch`; an error message is now raised when an invalid or `null` status is passed.
+- Console Commands aren't anymore defined multiple times across `Program.cs` and `ConsoleInterface.cs` but rather properties of the IUserInterface.
+
 ## Implemented the following API function:
  - MakeBooking
  - RemoveBooking
@@ -34,3 +39,6 @@
 
 ## Improvements for the next week:
  - BookingByID function
+
+## Unfinished
+- How to test cleanly TestUIs (Program.cs is currently not tested.)
