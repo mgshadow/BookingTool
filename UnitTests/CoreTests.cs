@@ -53,9 +53,9 @@ namespace UnitTests
     [TestMethod]
     public void BookingResultEqualityTest()
     {
-      var first = new BookingResult(BookingStatus.confirmed);
-      var same = new BookingResult(BookingStatus.confirmed);
-      var different = new BookingResult(BookingStatus.waiting);
+      var first = new BookingResult(BookingStatus.Confirmed);
+      var same = new BookingResult(BookingStatus.Confirmed);
+      var different = new BookingResult(BookingStatus.Waiting);
 
       Assert.IsTrue(first.Equals(same));
       Assert.IsTrue(first.Equals((object)same));

@@ -2,8 +2,8 @@
 {
   public enum BookingStatus
   {
-    confirmed,
-    waiting,
-    duplicate
+    Confirmed,
+    Waiting,
+    Duplicate
   }
 }

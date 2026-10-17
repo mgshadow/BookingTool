@@ -27,11 +27,11 @@ namespace BookingToolUI
         {
             switch (booking)
             {
-                case BookingStatus.confirmed:
+                case BookingStatus.Confirmed:
                     return "Booking confirmed!";
-                case BookingStatus.waiting:
+                case BookingStatus.Waiting:
                     return "You are on the waiting list!";
-                case BookingStatus.duplicate:
+                case BookingStatus.Duplicate:
                     return "User already exists!";
                 default:
                     throw new InvalidOperationException();
