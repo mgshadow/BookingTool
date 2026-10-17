@@ -1,19 +1,15 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BookingToolCLI;
-using System;
+﻿using BookingToolCLI;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
-
 
 namespace UnitTests
 {
-
-
   [TestClass]
   public class UnitTests
   {
-    private string[] c9 = new[] { "u01", "u02", "u03", "u04","u05","u06","u07","u08","u09" };
+    private string[] c9 = new[] { "u01", "u02", "u03", "u04", "u05", "u06", "u07", "u08", "u09" };
     private string[] w2 = new[] { "w01", "w02" };
-    private string[] c10 = new[] { "u01", "u02", "u03", "u04","u05","u06","u07","u08","u09", "u10" };
+    private string[] c10 = new[] { "u01", "u02", "u03", "u04", "u05", "u06", "u07", "u08", "u09", "u10" };
 
     [TestMethod]
     public void FirstBookingTest()
@@ -25,7 +21,6 @@ namespace UnitTests
       Assert.AreEqual(1, result.Confirmed.Count);
       Assert.AreEqual("alex", result.Confirmed[0].Id);
       Assert.AreEqual(0, result.WaitList.Count);
-
     }
 
     [TestMethod]
@@ -34,8 +29,6 @@ namespace UnitTests
       var api = new API();
 
       CreateBookings(api, c9);
-
-
       Assert.AreEqual(BookingStatus.confirmed, api.MakeBooking($"u10").Status);
 
       var result = api.GetBookings();
@@ -51,31 +44,24 @@ namespace UnitTests
       var api = new API();
 
       CreateBookings(api, c10);
-
-      
-
       Assert.AreEqual(BookingStatus.waiting, api.MakeBooking($"w01").Status);
 
       var result = api.GetBookings();
       Assert.AreEqual(10, result.Confirmed.Count);
       Assert.AreEqual(1, result.WaitList.Count);
       Assert.AreEqual("w01", result.WaitList[0].Id);
-
     }
 
     [TestMethod]
     public void DuplicateWithSpaceTest()
     {
       var api = new API();
+      CreateBookings(api, "alex", "bea", "uhris");
 
-      CreateBookings(api, "alex","bea","uhris");
-      
-      var resultBefore = api.GetBookings();      
-
+      var resultBefore = api.GetBookings();
       Assert.AreEqual(BookingStatus.duplicate, api.MakeBooking($"alex").Status);
 
       var resultAfter = api.GetBookings();
-
       Assert.AreEqual(resultBefore, resultAfter);
     }
 
@@ -83,15 +69,12 @@ namespace UnitTests
     public void DuplicateWhenFullTest()
     {
       var api = new API();
-
-      CreateBookings(api, c10);      
+      CreateBookings(api, c10);
 
       var resultBefore = api.GetBookings();
-
       Assert.AreEqual(BookingStatus.duplicate, api.MakeBooking($"u04").Status);
-      
-      var resultAfter = api.GetBookings();
 
+      var resultAfter = api.GetBookings();
       Assert.AreEqual(resultBefore, resultAfter);
     }
 
@@ -101,14 +84,12 @@ namespace UnitTests
       var api = new API();
 
       CreateBookings(api, c10);
-      CreateBookings(api, w2);     
+      CreateBookings(api, w2);
 
       var resultBefore = api.GetBookings();
-
       Assert.AreEqual(BookingStatus.duplicate, api.MakeBooking($"w01").Status);
 
       var resultAfter = api.GetBookings();
-
       Assert.AreEqual(resultBefore, resultAfter);
     }
 
@@ -120,13 +101,10 @@ namespace UnitTests
       CreateBookings(api, c10);
       CreateBookings(api, w2);
 
-
       var resultBefore = api.GetBookings();
-
       Assert.AreEqual(BookingStatus.waiting, api.MakeBooking($"w03").Status);
 
       var resultAfter = api.GetBookings();
-
       Assert.AreNotEqual(resultBefore, resultAfter);
       CollectionAssert.AreEqual(resultBefore.Confirmed.ToArray(), resultAfter.Confirmed.ToArray());
       CollectionAssert.AreEqual(resultBefore.WaitList.ToArray(), resultAfter.WaitList.Take(2).ToArray());
@@ -146,9 +124,7 @@ namespace UnitTests
       Assert.AreEqual("alex", result.Confirmed[0].Id);
       Assert.AreEqual("Alex", result.Confirmed[1].Id);
       Assert.AreEqual(0, result.WaitList.Count);
-
     }
-
 
     [TestMethod]
     public void OneSequenceTest()
@@ -167,7 +143,7 @@ namespace UnitTests
       Assert.AreEqual(BookingStatus.waiting, api.MakeBooking("w01").Status);
       var result02 = api.GetBookings();
       CollectionAssert.AreEqual(c10, result02.Confirmed.Select(c => c.Id).ToArray());
-      CollectionAssert.AreEqual(new[] {"w01"} , result02.WaitList.Select(c => c.Id).ToArray());
+      CollectionAssert.AreEqual(new[] { "w01" }, result02.WaitList.Select(c => c.Id).ToArray());
 
       Assert.AreEqual(BookingStatus.waiting, api.MakeBooking("w02").Status);
       var result03 = api.GetBookings();
@@ -181,10 +157,6 @@ namespace UnitTests
       Assert.AreEqual(BookingStatus.duplicate, api.MakeBooking("u03").Status);
       var result05 = api.GetBookings();
       Assert.AreEqual(result03, result05);
-
-
-
-
     }
 
     [TestMethod]
@@ -225,7 +197,6 @@ namespace UnitTests
       var resultBefore = api.GetBookings();
 
       Assert.IsFalse(api.RemoveBooking("unknown"));
-
       Assert.AreEqual(resultBefore, api.GetBookings());
     }
 
@@ -236,8 +207,5 @@ namespace UnitTests
         api.MakeBooking(id);
       }
     }
-
-
-
   }
 }

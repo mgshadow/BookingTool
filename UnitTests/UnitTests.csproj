@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CoreTests.cs" />
+    <Compile Include="UiTests.cs" />
     <Compile Include="UnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -59,6 +60,10 @@
     <ProjectReference Include="..\BookingToolCLI\BookingToolCLI.csproj">
       <Project>{c57932ca-a663-49bd-91b7-55f077278a58}</Project>
       <Name>BookingToolCLI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BookingToolUI\BookingToolUI.csproj">
+      <Project>{406725AA-F45E-470F-BE2A-9D2E26CC419D}</Project>
+      <Name>BookingToolUI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

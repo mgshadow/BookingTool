@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookingToolCLI
 {
-
-
   public class API
   {
     private const int ConfirmedCapacity = 10;
@@ -56,6 +52,5 @@ namespace BookingToolCLI
     {
       return new BookingsList(confirmed.ToArray(), waitList.ToArray());
     }
-
   }
 }

@@ -5,6 +5,5 @@
     confirmed,
     waiting,
     duplicate
-
   }
 }
