@@ -1,13 +1,10 @@
 # BookingTool
 
 ## How to Start the Program
-@Team console-application-> pease write this
+- Compile the solution and run the `BookingToolUI.exe`
 
 ## How to Run Checks
 - Run all Unit Tests in the UnitTests.csproj or via the TestExplorer
-
-## What ist unfinished
-- implementation of console application -> @team console-applilcation, please remove this line after implementation
 
 ## Improvements for the next week:
 - function to remove booking
@@ -22,6 +19,13 @@
  - UnitTests.cs line 147 modified
       Assert.AreEqual("Alex", result.Confirmed[1].Id);
  - For the Testcase OneSequenceTest "Assert" to "CollectionAssert" changed.
+
+## Review group 2 from group 3
+- Implementation of `MakeBooking(string id)` is correct
+- Implementation of `RemoveBooking(string id)`:
+     - currently Waiting List and Booking List are implemented as a `List<BookingEntry>`, using a `Queue` class would be more straightforward because of FiFo principle
+- Implementation of `GetBookings()` is straightforward
+- Tests for the implementation are successful
 
 ## Implemented the following API function:
  - MakeBooking
