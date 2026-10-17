@@ -4,5 +4,6 @@
   {
     string ReadLine();
     void WriteLine(string text);
+    string convertStatusToString(BookingStatus status);
   }
 }
