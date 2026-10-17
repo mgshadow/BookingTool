@@ -23,9 +23,11 @@
 ## Review group 2 from group 3
 - Implementation of `MakeBooking(string id)` is correct
 - Implementation of `RemoveBooking(string id)`:
-     - currently Waiting List and Booking List are implemented as a `List<BookingEntry>`, using a `Queue` class would be more straightforward because of FiFo principle
+     - at the moment, by removing a booking, the first element on the waiting list is added at the end of the current bookings
+     - another design choice could be to replace the removed booking by the first element on the waiting list. in this case, the code has to be changed to: `confirmed.Insert(confirmedIndex, waitList[0]); waitList.RemoveAt(0);`
 - Implementation of `GetBookings()` is straightforward
 - Tests for the implementation are successful
+- Improved readability of implemented features by adding clear brackets for if statements
 
 ## Review Group 3 from Group 
 - In the `PrintBookings` function, removed the position counter and implemented the selection with a value/index tuple instead, since the `position` variable is not needed outside the loop.
